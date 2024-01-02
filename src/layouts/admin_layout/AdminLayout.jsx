@@ -1,9 +1,9 @@
-import RootLayout from "../root_layout/RootLayout";
+import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
   return (
     <div>
-      <RootLayout />
+      <Outlet />
     </div>
   );
 };

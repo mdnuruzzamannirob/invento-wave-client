@@ -10,8 +10,24 @@ import ShopAdminRouteChecker from "./route_checker/ShopAdminRouteChecker";
 import AdminRouteChecker from "./route_checker/AdminRouteChecker";
 import ForbiddenPage from "../pages/error_pages/ForbiddenPage";
 import UnauthorizedPage from "../pages/error_pages/UnauthorizedPage";
+import AdminLayout from "../layouts/admin_layout/AdminLayout";
+import ShopAdminLayout from "../layouts/shop_admin_layout/ShopAdminLayout";
+import ShopAdminDashboardPage from "../pages/dashboard_pages/shop_admin/ShopAdminDashboardPage";
+import AddProductPage from "../pages/dashboard_pages/shop_admin/AddProductPage";
+import ManageProductsPage from "../pages/dashboard_pages/shop_admin/ManageProductsPage";
+import SellProductsPage from "../pages/dashboard_pages/shop_admin/SellProductsPage";
+import SalesHistoryPage from "../pages/dashboard_pages/shop_admin/SalesHistoryPage";
+import PurchaseSubscriptionPage from "../pages/dashboard_pages/shop_admin/PurchaseSubscriptionPage";
+import AdminDashboardPage from "../pages/dashboard_pages/admin/AdminDashboardPage";
+import AllUsersPage from "../pages/dashboard_pages/admin/AllUsersPage";
+import AllShopsPage from "../pages/dashboard_pages/admin/AllShopsPage";
+import ManagePricingPage from "../pages/dashboard_pages/admin/ManagePricingPage";
+import ShopAdminSettingPage from "../pages/dashboard_pages/shop_admin/ShopAdminSettingPage";
+import HelpCenterPage from "../pages/dashboard_pages/shop_admin/HelpCenterPage";
+import SubscriptionSalesHistory from "../pages/dashboard_pages/admin/SubscriptionSalesHistory";
+import HelpCenterMessagesPage from "../pages/dashboard_pages/admin/HelpCenterMessagesPage";
 
-const PageRoute = createBrowserRouter([
+const PageRouter = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
@@ -32,59 +48,53 @@ const PageRoute = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/login",
-    element: <LoginPage />,
-  },
-  {
-    path: "/register",
-    element: <RegisterPage />,
-  },
+
+  // shop admin dashboard
+
   {
     path: "/dashboard",
-    element: <AuthChecker>{/* <DashboardLayout /> */}</AuthChecker>,
-
+    element: (
+      <ShopAdminRouteChecker>
+        <ShopAdminLayout />
+      </ShopAdminRouteChecker>
+    ),
     children: [
-      // manager dashboard routes //
       {
-        path: "manage-product",
-        element: (
-          <ShopAdminRouteChecker>
-            {/* <ManageProduct /> */}
-          </ShopAdminRouteChecker>
-        ),
+        index: true,
+        element: <ShopAdminDashboardPage />,
       },
       {
-        path: "sales-Collection",
-        element: (
-          <ShopAdminRouteChecker>
-            {/* <SalesCollection /> */}
-          </ShopAdminRouteChecker>
-        ),
+        path: "add_product",
+        element: <AddProductPage />,
       },
       {
-        path: "shop-sale-summery",
-        element: (
-          <ShopAdminRouteChecker>
-            {/* <ShopSaleSummery /> */}
-          </ShopAdminRouteChecker>
-        ),
+        path: "manage_products",
+        element: <ManageProductsPage />,
       },
       {
-        path: "subscription",
-        element: (
-          <ShopAdminRouteChecker>
-            {/* <SubscriptionPayment /> */}
-          </ShopAdminRouteChecker>
-        ),
+        path: "sell_products",
+        element: <SellProductsPage />,
+      },
+      {
+        path: "sales_history",
+        element: <SalesHistoryPage />,
+      },
+      {
+        path: "purchase_subscription",
+        element: <PurchaseSubscriptionPage />,
         loader: () => fetch("/pricing.json"),
       },
       {
-        path: "manage-product/add-product",
-        element: (
-          <ShopAdminRouteChecker>{/* <AddProduct /> */}</ShopAdminRouteChecker>
-        ),
+        path: "setting",
+        element: <ShopAdminSettingPage />,
       },
+      {
+        path: "help_center",
+        element: <HelpCenterPage />,
+      },
+
+      // TODO -------------------------------
+
       {
         path: "sales-Collection/checkout/:id",
         element: (
@@ -109,14 +119,45 @@ const PageRoute = createBrowserRouter([
           </ShopAdminRouteChecker>
         ),
       },
+    ],
+  },
 
-      // admin dashboard routes //
+  // admin dashboard
+
+  {
+    path: "/admin_dashboard",
+    element: (
+      <AdminRouteChecker>
+        <AdminLayout />
+      </AdminRouteChecker>
+    ),
+    children: [
       {
-        path: "manage-shop",
-        element: (
-          <AdminRouteChecker>{/* <AdminManageShop /> */}</AdminRouteChecker>
-        ),
+        index: true,
+        element: <AdminDashboardPage />,
       },
+      {
+        path: "all_users",
+        element: <AllUsersPage />,
+      },
+      {
+        path: "all_shops",
+        element: <AllShopsPage />,
+      },
+      {
+        path: "manage_pricing",
+        element: <ManagePricingPage />,
+      },
+      {
+        path: "subscription_sales_history",
+        element: <SubscriptionSalesHistory />,
+      },
+      {
+        path: "help_center_messages",
+        element: <HelpCenterMessagesPage />,
+      },
+
+      // TODO ------------------------------
       {
         path: "admin-sale-summery",
         element: (
@@ -126,6 +167,20 @@ const PageRoute = createBrowserRouter([
       },
     ],
   },
+
+  // authentication page
+
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
+  },
+
+  //  error page
+
   {
     path: "/error/unauthorized",
     element: <UnauthorizedPage />,
@@ -136,4 +191,4 @@ const PageRoute = createBrowserRouter([
   },
 ]);
 
-export default PageRoute;
+export default PageRouter;

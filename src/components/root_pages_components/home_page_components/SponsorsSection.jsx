@@ -1,4 +1,4 @@
-import logo from "../../../assets/download.png";
+import logo1 from "../../../assets/download.png";
 import logo2 from "../../../assets/download (1).png";
 import logo3 from "../../../assets/download (2).png";
 import logo4 from "../../../assets/download (3).png";
@@ -20,7 +20,7 @@ const SponsorsSection = () => {
           data-aos="fade-right"
           data-aos-duration="1000"
           className=""
-          src={logo}
+          src={logo1}
           alt=""
         />
         <img data-aos="zoom-in" data-aos-duration="1000" src={logo2} alt="" />

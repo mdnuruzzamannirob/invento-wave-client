@@ -43,8 +43,7 @@ const ContactSection = () => {
           section="CONTACT"
           title="Have questions or need assistance?"
           subTitle="Reach out to our dedicated team. We're here to help you make
-            the most of your Inventory management experience. Your efficient
-            inventory management journey starts with a simple message or call."
+            the most of your Inventory management experience."
         />
         <div className="flex flex-col lg:flex-row gap-10 md:gap-20 lg:gap-40 mt-10 md:mt-20">
           <div
@@ -56,14 +55,14 @@ const ContactSection = () => {
               <AiTwotoneMail className="w-8 h-8 text-pink-600" />
               <div className="">
                 <h3 className="font-semibold opacity-90">Email</h3>
-                <p className="text-sm opacity-60">nmd28573@gmail.com</p>
+                <p className="text-sm opacity-60">nuruzzamanmd2002@gmail.com</p>
               </div>
             </div>
             <div className="flex items-center gap-6">
               <BsPhone className="w-8 h-8 text-pink-600" />
               <div className="">
                 <h3 className="font-semibold opacity-90">Phone</h3>
-                <p className="text-sm  opacity-60">012-345-6789</p>
+                <p className="text-sm  opacity-60">0123456789</p>
               </div>
             </div>
             <div className="flex items-center gap-6">

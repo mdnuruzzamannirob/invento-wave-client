@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { HashLoader } from "react-spinners";
-import RootNavbar from "./RootNavbar";
 import RootFooter from "./RootFooter";
 import useAuth from "../../hooks/useAuth";
 import useFetchSecure from "../../hooks/useFetchSecure";
+import RootNavbar from "./root_navbar/RootNavbar";
 
 const RootLayout = () => {
   const { loader, user } = useAuth();

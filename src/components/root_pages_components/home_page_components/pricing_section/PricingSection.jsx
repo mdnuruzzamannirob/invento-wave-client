@@ -1,12 +1,13 @@
 import { TiTick } from "react-icons/ti";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { HashLoader } from "react-spinners";
-import { MdOutlineNoEncryptionGmailerrorred } from "react-icons/md";
-import useAuth from "../../../hooks/useAuth";
-import useFetchSecure from "../../../hooks/useFetchSecure";
-import Container from "../../ui/Container";
-import Title from "../../ui/Title";
-import Button from "../../ui/Button";
+import useAuth from "../../../../hooks/useAuth";
+import useFetchSecure from "../../../../hooks/useFetchSecure";
+import Container from "../../../ui/Container";
+import Title from "../../../ui/Title";
+import Button from "../../../ui/Button";
+import PricingSectionModalOne from "./PricingSectionModalOne";
+import PricingSectionModalTwo from "./PricingSectionModalTwo";
 
 const PricingSection = () => {
   const pricing = useLoaderData();
@@ -105,7 +106,7 @@ const PricingSection = () => {
                   </div>
                 )}
               </div>
-              {userData.role === "Shop-Manager" ? (
+              {userData?.role === "Shop-Manager" ? (
                 <Link
                   to={`/dashboard/subscription/checkout/${data.id}`}
                   state={location.pathname}
@@ -121,67 +122,31 @@ const PricingSection = () => {
                     data-aos="flip-up"
                     data-aos-duration="500"
                     onClick={() =>
-                      document.getElementById("my_modal_2").showModal()
+                      document.getElementById("my_modal_1").showModal()
                     }
                     className="w-full h-10 bg-sky-500 hover:bg-sky-600 text-lg font-normal"
                   >
                     Choose Plan
                   </Button>
-                  <dialog id="my_modal_2" className="modal -z-1">
-                    <div className="modal-box text-center">
-                      <p className="mt-10 mb-5 flex items-center justify-center">
-                        {" "}
-                        <MdOutlineNoEncryptionGmailerrorred className="w-20 h-20" />
-                      </p>
-
-                      <h3>
-                        You are a{" "}
-                        <span className="font-medium ">System-Admin</span>
-                      </h3>
-                      <h3 className="mt-3 mb-10">
-                        You can&apos;t go this route
-                      </h3>
-                    </div>
-                    <form method="dialog" className="modal-backdrop">
-                      <button>close</button>
-                    </form>
-                  </dialog>
                 </>
               ) : (
                 <>
-                  <button
-                    className=" btn w-full bg-sky-500 hover:bg-sky-600 text-white border-none text-lg font-normal"
+                  <Button
+                    className="w-full h-10 bg-sky-500 hover:bg-sky-600 text-lg font-normal"
                     data-aos="flip-up"
                     data-aos-duration="500"
                     onClick={() =>
-                      document.getElementById("my_modal_3").showModal()
+                      document.getElementById("my_modal_2").showModal()
                     }
                   >
                     Choose Plan
-                  </button>
-                  <dialog id="my_modal_3" className="modal -z-1">
-                    <div className="modal-box text-center">
-                      <p className="mt-10 mb-5 flex items-center justify-center">
-                        {" "}
-                        <MdOutlineNoEncryptionGmailerrorred className="w-20 h-20" />
-                      </p>
-
-                      <h3 className="font-medium">
-                        You have not any created shop
-                      </h3>
-                      <h3 className="mt-3 ">Please create a shop first</h3>
-                      <Link to={"/create-shop"} className="z-10">
-                        <Button className={"my-10"}>Create Shop Now</Button>
-                      </Link>
-                    </div>
-                    <form method="dialog" className="modal-backdrop">
-                      <button>close</button>
-                    </form>
-                  </dialog>
+                  </Button>
                 </>
               )}
             </div>
           ))}
+          <PricingSectionModalOne />
+          <PricingSectionModalTwo />
         </div>
       </Container>
     </div>
