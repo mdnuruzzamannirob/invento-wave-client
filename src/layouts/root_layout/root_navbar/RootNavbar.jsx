@@ -4,11 +4,11 @@ import { FaUser } from "react-icons/fa";
 import { IoMdArrowDropup } from "react-icons/io";
 import { HashLoader } from "react-spinners";
 import useAuth from "../../../hooks/useAuth";
-import useFetchSecure from "../../../hooks/useFetchSecure";
 import Container from "../../../components/ui/Container";
 import Button from "../../../components/ui/Button";
 import Logo from "../../../components/ui/Logo";
-import DrawerMenu from "./DrawerMenu";
+import DrawerNavbar from "./DrawerNavbar";
+import useSecureFetch from "../../../hooks/useSecureFetch";
 
 const RootNavbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
@@ -37,10 +37,12 @@ const RootNavbar = () => {
     };
   }, []);
 
-  const { data, refetch, isLoading, isPending } = useFetchSecure(
-    `api/user/${user?.email}`,
-    user?.email
-  );
+  const {
+    data: userData,
+    refetch,
+    isLoading,
+    isPending,
+  } = useSecureFetch(`api/user/${user?.email}`, user?.email);
   refetch();
 
   if (isLoading || isPending) {
@@ -65,9 +67,9 @@ const RootNavbar = () => {
       >
         Home
       </NavLink>
-      {data?.role === "System-Admin" ? (
+      {userData?.role === "System-Admin" ? (
         <NavLink
-          to="/dashboard/manage-shop"
+          to="/admin_dashboard"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
@@ -78,9 +80,9 @@ const RootNavbar = () => {
         >
           Dashboard
         </NavLink>
-      ) : data?.role === "Shop-Manager" ? (
+      ) : userData?.role === "Shop-Manager" ? (
         <NavLink
-          to="/dashboard/manage-product"
+          to="/dashboard"
           className={({ isActive, isPending }) =>
             isPending
               ? "pending"
@@ -221,7 +223,7 @@ const RootNavbar = () => {
         </div>
       </Container>
 
-      <DrawerMenu toggleMenu={toggleMenu} data={data} />
+      <DrawerNavbar toggleMenu={toggleMenu} userData={userData} />
     </nav>
   );
 };

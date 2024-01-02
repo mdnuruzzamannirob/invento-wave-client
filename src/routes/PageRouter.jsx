@@ -182,11 +182,11 @@ const PageRouter = createBrowserRouter([
   //  error page
 
   {
-    path: "/error/unauthorized",
+    path: "/error_unauthorized",
     element: <UnauthorizedPage />,
   },
   {
-    path: "/error/forbidden",
+    path: "/error_forbidden",
     element: <ForbiddenPage />,
   },
 ]);

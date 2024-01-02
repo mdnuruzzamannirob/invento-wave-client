@@ -2,12 +2,12 @@ import { Outlet } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import RootFooter from "./RootFooter";
 import useAuth from "../../hooks/useAuth";
-import useFetchSecure from "../../hooks/useFetchSecure";
 import RootNavbar from "./root_navbar/RootNavbar";
+import useSecureFetch from "../../hooks/useSecureFetch";
 
 const RootLayout = () => {
   const { loader, user } = useAuth();
-  const { refetch, isLoading } = useFetchSecure(
+  const { refetch, isLoading } = useSecureFetch(
     `api/user/${user?.email}`,
     user?.email
   );

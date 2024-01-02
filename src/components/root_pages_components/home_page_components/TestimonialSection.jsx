@@ -14,16 +14,16 @@ import {
   Pagination,
 } from "swiper/modules";
 import { FaUser } from "react-icons/fa";
-import useFetchSecure from "../../../hooks/useFetchSecure";
 import Container from "../../ui/Container";
 import Title from "../../ui/Title";
+import useSecureFetch from "../../../hooks/useSecureFetch";
 
 const TestimonialSection = () => {
   const {
     data: testimonialData,
     isPending,
     isLoading,
-  } = useFetchSecure(`/api/testimonials`, ["testimonialsData"]);
+  } = useSecureFetch(`/api/testimonials`, ["testimonialsData"]);
 
   if (isLoading || isPending) {
     return (

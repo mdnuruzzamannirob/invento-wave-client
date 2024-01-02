@@ -3,13 +3,13 @@ import bg from "../../assets/banner1.jpg";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useFetchSecure from "../../hooks/useFetchSecure";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../hooks/useAuth";
 import usePublicAPI from "../../hooks/usePublicAPI";
 import useSecureAPI from "../../hooks/useSecureAPI";
 import Container from "../../components/ui/Container";
 import Title from "../../components/ui/Title";
+import useSecureFetch from "../../hooks/useSecureFetch";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 
@@ -23,7 +23,7 @@ const CreateShopPage = () => {
   const axiosSecure = useSecureAPI();
   const navigate = useNavigate();
 
-  const { data } = useFetchSecure(`api/user/${user?.email}`, user?.email);
+  const { data } = useSecureFetch(`api/user/${user?.email}`, user?.email);
 
   const {
     register,

@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import useSecureAPI from "./useSecureAPI";
 
-const useFetchSecure = (url, key) => {
+const useSecureFetch = (url, ...key) => {
   const axiosSecure = useSecureAPI();
   const {
     data = [],
     refetch,
-    isLoading,
     isPending,
+    isLoading,
   } = useQuery({
-    queryKey: [key],
+    queryKey: [...key],
     queryFn: async () => {
       const res = await axiosSecure.get(url);
       return res.data;
@@ -19,4 +19,4 @@ const useFetchSecure = (url, key) => {
   return { data, refetch, isPending, isLoading };
 };
 
-export default useFetchSecure;
+export default useSecureFetch;

@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
-import SocialLoginForm from "../../components/ui/SocialLoginForm";
+import SocialLogin from "../../components/ui/SocialLogin";
 import Button from "../../components/ui/Button";
 
 const LoginPage = () => {
@@ -169,7 +169,7 @@ const LoginPage = () => {
                 Register
               </Link>
             </h3>
-            <SocialLoginForm />
+            <SocialLogin />
           </div>
         </div>
       </div>

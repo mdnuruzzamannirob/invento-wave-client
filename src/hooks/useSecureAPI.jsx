@@ -1,6 +1,6 @@
 import axios from "axios";
 import useAuth from "./useAuth";
-import { NavLink } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 const axiosAPI = axios.create({
   // baseURL: "http://localhost:6001",
@@ -16,6 +16,7 @@ const useSecureAPI = () => {
   });
 
   // interceptors 401 403
+
   axiosAPI.interceptors.response.use(
     (response) => {
       return response;
@@ -23,10 +24,10 @@ const useSecureAPI = () => {
     (error) => {
       const status = error.response.status;
       if (status === 401) {
-        <NavLink to={"/error/unauthorized"}></NavLink>;
+        <Navigate to={"/error_unauthorized"} />;
       }
       if (status === 403) {
-        <NavLink to={"/error/forbidden"}></NavLink>;
+        <Navigate to={"/error_forbidden"} />;
       }
       logout();
     }

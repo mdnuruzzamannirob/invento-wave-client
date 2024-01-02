@@ -2,12 +2,12 @@ import { TiTick } from "react-icons/ti";
 import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { HashLoader } from "react-spinners";
 import useAuth from "../../../../hooks/useAuth";
-import useFetchSecure from "../../../../hooks/useFetchSecure";
 import Container from "../../../ui/Container";
 import Title from "../../../ui/Title";
 import Button from "../../../ui/Button";
 import PricingSectionModalOne from "./PricingSectionModalOne";
 import PricingSectionModalTwo from "./PricingSectionModalTwo";
+import useSecureFetch from "../../../../hooks/useSecureFetch";
 
 const PricingSection = () => {
   const pricing = useLoaderData();
@@ -19,7 +19,7 @@ const PricingSection = () => {
     refetch,
     isLoading,
     isPending,
-  } = useFetchSecure(`api/user/${user?.email}`, user?.email);
+  } = useSecureFetch(`api/user/${user?.email}`, user?.email);
   refetch();
 
   if (isLoading || isPending) {

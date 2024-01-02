@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import useAuth from "../../hooks/useAuth";
 import { Navigate, useLocation } from "react-router-dom";
-import useFetchSecure from "../../hooks/useFetchSecure";
 import { HashLoader } from "react-spinners";
+import useSecureFetch from "../../hooks/useSecureFetch";
 
 const ShopAdminRouteChecker = ({ children }) => {
   const { user, loader } = useAuth();
   const location = useLocation();
-  const { data, refetch, isLoading, isPending } = useFetchSecure(
+  const { data, refetch, isLoading, isPending } = useSecureFetch(
     `api/user/${user?.email}`,
     user?.email
   );
@@ -22,7 +22,7 @@ const ShopAdminRouteChecker = ({ children }) => {
   }
 
   if (data.role !== "Shop-Manager") {
-    return <Navigate to={"/error/unauthorized"} />;
+    return <Navigate to={"/error_unauthorized"} />;
   }
   if (!user?.email) {
     return <Navigate to={"/login"} state={location.pathname}></Navigate>;

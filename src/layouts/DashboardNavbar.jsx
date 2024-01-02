@@ -4,15 +4,15 @@ import useAuth from "../hooks/useAuth";
 import { TiHome } from "react-icons/ti";
 import { IoIosLogOut } from "react-icons/io";
 import { FaUser } from "react-icons/fa";
-import useFetchSecure from "../hooks/useFetchSecure";
 import { BsCollectionFill } from "react-icons/bs";
 import { GiProfit } from "react-icons/gi";
 import { MdPayment } from "react-icons/md";
 import { MdManageHistory } from "react-icons/md";
+import useSecureFetch from "../hooks/useSecureFetch";
 const DashboardNavbar = () => {
   const { user, logout } = useAuth();
 
-  const { data, refetch, isLoading, isPending } = useFetchSecure(
+  const { data, refetch, isLoading, isPending } = useSecureFetch(
     `api/user/${user?.email}`,
     user?.email
   );

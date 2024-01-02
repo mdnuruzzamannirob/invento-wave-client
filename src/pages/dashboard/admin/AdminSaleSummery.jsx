@@ -1,5 +1,4 @@
 import Title from "../../../components/shared/Title";
-import useFetchSecure from "../../../hooks/useFetchSecure";
 import { useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import SaleSummeryForm from "./SaleSummeryForm";
@@ -11,6 +10,7 @@ import { useEffect, useState } from "react";
 import Button from "../../../components/shared/Button";
 import { GrFormNext, GrFormPrevious } from "react-icons/gr";
 import useSecureAPI from "../../../hooks/useSecureAPI";
+import useSecureFetch from "../../../hooks/useSecureFetch";
 
 const AdminSaleSummery = () => {
   const [usersData, setUsersData] = useState([]);
@@ -24,7 +24,7 @@ const AdminSaleSummery = () => {
     isLoading,
     isPending,
     refetch,
-  } = useFetchSecure(`/api/payments`, "TotalIncomeData");
+  } = useSecureFetch(`/api/payments`, "TotalIncomeData");
 
   useEffect(() => {
     axiosSecure
@@ -36,7 +36,7 @@ const AdminSaleSummery = () => {
       .then((data) => setUsersData(data.data));
   }, [axiosSecure, currentPage, itemPerPage]);
 
-  const { data: usersCount } = useFetchSecure(`/api/users/count`, "usersCount");
+  const { data: usersCount } = useSecureFetch(`/api/users/count`, "usersCount");
 
   if (isLoading || isPending) {
     return (

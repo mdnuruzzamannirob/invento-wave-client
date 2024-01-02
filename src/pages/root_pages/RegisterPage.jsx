@@ -11,7 +11,7 @@ import {
   RiCheckboxCircleFill,
 } from "react-icons/ri";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import SocialLoginForm from "../../components/ui/SocialLoginForm";
+import SocialLogin from "../../components/ui/SocialLogin";
 import usePublicAPI from "../../hooks/usePublicAPI";
 import useAuth from "../../hooks/useAuth";
 import { auth } from "../../firebase/firebase.config";
@@ -280,7 +280,7 @@ const RegisterPage = () => {
                 Login
               </Link>
             </h3>
-            <SocialLoginForm />
+            <SocialLogin />
           </div>
         </div>
       </div>

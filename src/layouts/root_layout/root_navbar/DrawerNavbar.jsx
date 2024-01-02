@@ -6,7 +6,7 @@ import { MdSpaceDashboard } from "react-icons/md";
 import useAuth from "../../../hooks/useAuth";
 import PropTypes from "prop-types";
 
-const DrawerMenu = ({ toggleMenu, data }) => {
+const DrawerMenu = ({ toggleMenu, userData }) => {
   const { user, logout } = useAuth();
   return (
     <div
@@ -77,9 +77,9 @@ const DrawerMenu = ({ toggleMenu, data }) => {
         >
           <GoHomeFill /> Home
         </NavLink>
-        {data?.role === "System-Admin" ? (
+        {userData?.role === "System-Admin" ? (
           <NavLink
-            to="/dashboard/manage-shop"
+            to="/admin_dashboard"
             className={({ isActive, isPending }) =>
               isPending
                 ? "pending"
@@ -90,9 +90,9 @@ const DrawerMenu = ({ toggleMenu, data }) => {
           >
             <MdSpaceDashboard /> Dashboard
           </NavLink>
-        ) : data?.role === "Shop-Manager" ? (
+        ) : userData?.role === "Shop-Manager" ? (
           <NavLink
-            to="/dashboard/manage-product"
+            to="/dashboard"
             className={({ isActive, isPending }) =>
               isPending
                 ? "pending"
@@ -126,7 +126,7 @@ const DrawerMenu = ({ toggleMenu, data }) => {
 
 DrawerMenu.propTypes = {
   toggleMenu: PropTypes.bool,
-  data: PropTypes.object,
+  userData: PropTypes.object,
 };
 
 export default DrawerMenu;
