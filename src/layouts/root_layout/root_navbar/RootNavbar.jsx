@@ -107,6 +107,30 @@ const RootNavbar = () => {
           Create Shop
         </NavLink>
       )}
+      <NavLink
+        to="/blog"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-pink-600 underline underline-offset-8"
+            : "text-sky-400 hover:underline underline-offset-8"
+        }
+      >
+        Blog
+      </NavLink>
+      <NavLink
+        to="/contact_us"
+        className={({ isActive, isPending }) =>
+          isPending
+            ? "pending"
+            : isActive
+            ? "text-pink-600 underline underline-offset-8"
+            : "text-sky-400 hover:underline underline-offset-8"
+        }
+      >
+        Contact Us
+      </NavLink>
     </>
   );
 
