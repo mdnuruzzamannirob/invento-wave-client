@@ -9,10 +9,7 @@ const DashboardLayout = () => {
 
   return (
     <>
-      <Helmet>
-        <title>Dashboard - Invento Wave</title>
-      </Helmet>
-      <div className="flex min-h-screen relative font-Fira">
+      <div className="flex min-h-screen relative ">
         <div className="lg:hidden z-40">
           <label className="btn btn-square swap swap-rotate rounded-md fixed bottom-10 right-10 border-none bg-pink-600 hover:bg-pink-700 text-white">
             <input onClick={() => setToggleMenu(!toggleMenu)} type="checkbox" />

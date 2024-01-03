@@ -114,21 +114,6 @@ const DashboardNavbar = () => {
             Invento <span className="text-pink-600">Wave</span>
           </h2>
         </Link>
-        {user?.photoURL ? (
-          <img
-            className="w-28 h-28 rounded-full mt-5"
-            src={user?.photoURL}
-            alt=""
-          />
-        ) : (
-          <p className="w-20 h-20  overflow-hidden rounded-full mt-3">
-            <FaUser className="w-full h-full text-sky-500" />
-          </p>
-        )}
-        <h3 className="font-semibold opacity-80 mt-3 mb-1">
-          {user?.displayName}
-        </h3>
-        <h3 className="text-sm opacity-90 mb-2">{user?.email}</h3>
       </div>
       <div className="flex items-center mt-3">
         <Link to={"/"} className="flex-1 w-full btn btn-sm font-medium text-xs">

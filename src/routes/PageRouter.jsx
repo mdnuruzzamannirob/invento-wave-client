@@ -22,10 +22,12 @@ import AdminDashboardPage from "../pages/dashboard_pages/admin/AdminDashboardPag
 import AllUsersPage from "../pages/dashboard_pages/admin/AllUsersPage";
 import AllShopsPage from "../pages/dashboard_pages/admin/AllShopsPage";
 import ManagePricingPage from "../pages/dashboard_pages/admin/ManagePricingPage";
-import ShopAdminSettingPage from "../pages/dashboard_pages/shop_admin/ShopAdminSettingPage";
+import ShopAdminSettingsPage from "../pages/dashboard_pages/shop_admin/ShopAdminSettingsPage";
 import HelpCenterPage from "../pages/dashboard_pages/shop_admin/HelpCenterPage";
-import SubscriptionSalesHistory from "../pages/dashboard_pages/admin/SubscriptionSalesHistory";
-import HelpCenterMessagesPage from "../pages/dashboard_pages/admin/HelpCenterMessagesPage";
+import AdminSalesHistory from "../pages/dashboard_pages/admin/AdminSalesHistory";
+import MessageBoxPage from "../pages/dashboard_pages/admin/MessageBoxPage";
+import AdminSettingsPage from "../pages/dashboard_pages/admin/AdminSettingsPage";
+import BlogPage from "../pages/root_pages/BlogPage";
 
 const PageRouter = createBrowserRouter([
   {
@@ -45,6 +47,10 @@ const PageRouter = createBrowserRouter([
             <CreateShopPage />
           </AuthChecker>
         ),
+      },
+      {
+        path: "/blog",
+        element: <BlogPage />,
       },
     ],
   },
@@ -82,11 +88,10 @@ const PageRouter = createBrowserRouter([
       {
         path: "purchase_subscription",
         element: <PurchaseSubscriptionPage />,
-        loader: () => fetch("/pricing.json"),
       },
       {
-        path: "setting",
-        element: <ShopAdminSettingPage />,
+        path: "settings",
+        element: <ShopAdminSettingsPage />,
       },
       {
         path: "help_center",
@@ -149,12 +154,16 @@ const PageRouter = createBrowserRouter([
         element: <ManagePricingPage />,
       },
       {
-        path: "subscription_sales_history",
-        element: <SubscriptionSalesHistory />,
+        path: "sales_history",
+        element: <AdminSalesHistory />,
       },
       {
-        path: "help_center_messages",
-        element: <HelpCenterMessagesPage />,
+        path: "message_box",
+        element: <MessageBoxPage />,
+      },
+      {
+        path: "settings",
+        element: <AdminSettingsPage />,
       },
 
       // TODO ------------------------------

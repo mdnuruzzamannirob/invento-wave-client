@@ -19,16 +19,16 @@ const SocialLoginForm = () => {
         name: res?.user?.displayName,
         email: res?.user?.email,
         image: res?.user?.photoURL,
-        role: "Logged-User",
+        role: "Logged User",
       };
       axiosPublic
         .post(`/api/user/create/${res?.user?.email}`, userInfo)
         .then((res) => {
           if (res.data.insertedId) {
-            toast.success(`${social} login Successful!!!`, { id: toastId });
+            toast.success(`${social} login Successful !`, { id: toastId });
             navigate(location?.state ? location.state : "/");
           } else if (res.data.message) {
-            toast.success(`${social} login Successful!!!`, { id: toastId });
+            toast.success(`${social} login Successful !`, { id: toastId });
             navigate(location?.state ? location.state : "/");
           }
         });

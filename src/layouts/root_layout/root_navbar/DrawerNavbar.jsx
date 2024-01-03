@@ -16,6 +16,7 @@ import { RiContactsFill } from "react-icons/ri";
 
 const DrawerMenu = ({ toggleMenu, userData }) => {
   const { user, logout } = useAuth();
+
   return (
     <div
       className={`lg:hidden fixed top-0 left-0 h-screen w-9/12 sm:w-1/2 md:w-2/5 bg-white transition-transform transform ${
@@ -27,7 +28,7 @@ const DrawerMenu = ({ toggleMenu, userData }) => {
           to={"/"}
           className="h-[82px] flex justify-center items-center gap-3 border-b-2 mb-5"
         >
-          <Logo imgClass="w-8 h-8" titleClass="text-2xl sm:text-2xl" />
+          <Logo imgClass="w-8 h-8" titleClass="text-2xl" />
         </Link>
         <NavLink
           to="/"

@@ -206,12 +206,12 @@ const RootNavbar = () => {
             <>
               {" "}
               <Link
-                to={"/login"}
+                to="/login"
                 className="btn btn-sm text-lg text-sky-400 hover:underline underline-offset-8 border-none bg-transparent hover:bg-transparent px-3 rounded-md"
               >
                 Login
               </Link>
-              <Link to={"/register"}>
+              <Link to="/register">
                 <Button>Register</Button>
               </Link>
             </>
