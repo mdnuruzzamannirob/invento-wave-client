@@ -218,7 +218,7 @@ const RootNavbar = () => {
           )}
         </div>
         <div className="lg:hidden">
-          <label className="btn btn-square swap swap-rotate rounded-md  bg-pink-600 hover:bg-pink-700 text-white border-none">
+          <label className="btn btn-square swap swap-rotate  bg-pink-600 hover:bg-pink-700 text-white border-none">
             {/* this hidden checkbox controls the state */}
             <input onClick={() => setToggleMenu(!toggleMenu)} type="checkbox" />
 

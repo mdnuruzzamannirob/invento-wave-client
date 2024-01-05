@@ -19,3 +19,8 @@ div:where(.swal2-container) button:where(.swal2-styled).swal2-cancel:focus {
   background-color: lightskyblue !important;
   color: white !important;
 } */
+
+/* shop admin / navbar / profile modal - divider style */
+.divider:not(:empty) {
+  gap: 0rem;
+}

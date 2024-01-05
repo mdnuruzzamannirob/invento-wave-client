@@ -1,18 +1,34 @@
+import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
-import AdminNotificationModal from "./AdminNotificationModal";
-import AdminProfileModal from "./AdminProfileModal";
-import AdminSidebar from "../AdminSidebar";
+import useSecureFetch from "../../../hooks/useSecureFetch";
+import ShopAdminSidebar from "../shop_admin_sidebar/ShopAdminSidebar";
+import ShopAdminProfileModal from "./ShopAdminProfileModal";
+import ShopAdminNotificationModal from "./ShopAdminNotificationModal";
 
-const AdminNavbar = () => {
+const ShopAdminNavbar = () => {
   const [navOpen, setNavOpen] = useState(false);
+
+  const { user } = useAuth();
+
+  const {
+    data: shopData,
+    isLoading,
+    isPending,
+  } = useSecureFetch(`/api/shop/${user?.email}`, "shopData");
+
+  if (isLoading || isPending) {
+    return (
+      <div className="h-full w-full bg-gradient-to-r from-[#3a59af] to-[#352786]"></div>
+    );
+  }
 
   return (
     <div className="h-full w-full flex items-center justify-end gap-5 px-5 sm:px-8 md:px-10 bg-gradient-to-r from-[#3a59af] to-[#352786] text-white">
       {/* notification part */}
-      <AdminNotificationModal />
+      <ShopAdminNotificationModal />
 
-      {/* user profile modal part */}
-      <AdminProfileModal />
+      {/* shop admin profile modal part */}
+      <ShopAdminProfileModal shopData={shopData} />
 
       {/* small device menu */}
       <div className="xl:hidden">
@@ -48,10 +64,10 @@ const AdminNavbar = () => {
           navOpen ? "translate-x-0" : "-translate-x-full"
         } duration-700 ease-in-out z-10`}
       >
-        <AdminSidebar />
+        <ShopAdminSidebar />
       </div>
     </div>
   );
 };
 
-export default AdminNavbar;
+export default ShopAdminNavbar;

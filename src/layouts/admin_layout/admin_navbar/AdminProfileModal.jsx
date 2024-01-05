@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import { GoHomeFill } from "react-icons/go";
 
-const UserProfileModal = () => {
+const AdminProfileModal = () => {
   const [toggleProfile, setToggleProfile] = useState(false);
 
   const { user, logout } = useAuth();
@@ -14,18 +14,18 @@ const UserProfileModal = () => {
 
   return (
     <div className="flex items-center justify-end gap-3">
-      <div className="text-right">
-        <h3 className="text-sm font-semibold">{user?.displayName}</h3>
-        <p className="text-sm opacity-60">Admin Profile</p>
+      <div className="hidden sm:block text-right">
+        <h3 className="text-lg font-semibold">{user?.displayName}</h3>
+        <p className="text-sm opacity-70">Admin Profile</p>
       </div>
-      <div className="relative flex items-center">
+      <div className="md:relative flex items-center">
         {user?.photoURL ? (
           <button
             onClick={() => setToggleProfile(!toggleProfile)}
             className="btn btn-circle overflow-hidden border-none hover:border-none bg-transparent hover:bg-transparent"
           >
             <img
-              className="w-full h-full"
+              className="w-10 h-10 sm:w-full sm:h-full rounded-full"
               src={user.photoURL}
               alt="user photo"
             />
@@ -35,16 +35,16 @@ const UserProfileModal = () => {
             onClick={() => setToggleProfile(!toggleProfile)}
             className={`btn btn-circle border-2 ${
               toggleProfile
-                ? "bg-white border-transparent hover:bg-white hover:border-transparent"
-                : "border-sky-500 bg-transparent hover:border-sky-500 hover:bg-transparent"
+                ? "bg-white border-sky-500 hover:border-sky-500 hover:bg-white"
+                : " bg-transparent hover:border-sky-500 hover:bg-transparent"
             }`}
           >
             <FaUser className="w-6 h-6 text-sky-500" />
           </button>
         )}
         {toggleProfile && (
-          <div className="w-60 absolute top-20 right-0 bg-white rounded-md p-5 space-y-3 border-2 overflow-hidden">
-            <div className="flex items-center gap-3">
+          <div className="w-[280px] md:w-80 absolute top-24 md:top-20 right-5 md:right-0 bg-white text-black rounded-md border-2 overflow-hidden">
+            <div className="bg-gradient-to-br from-[#3a59af] to-[#352786] text-white flex items-center gap-3 p-5">
               {user?.photoURL ? (
                 <img
                   className="w-12 h-12 rounded-full"
@@ -58,29 +58,28 @@ const UserProfileModal = () => {
               )}
               <div>
                 <h3 className="text-base font-semibold">{user?.displayName}</h3>
-                <p title={user?.email} className="text-base opacity-60">
+                <p title={user?.email} className="text-base opacity-70">
                   <small>{user?.email}</small>
                 </p>
               </div>
             </div>
-            <div className="divider"></div>
-            <div>
+            <div className="space-y-2 p-5">
               <Link
                 to="/"
-                className="btn btn-sm h-10 w-full text-base bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
+                className="btn btn-sm h-10 w-full bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium text-[#3a59af]"
               >
                 <GoHomeFill /> Home
               </Link>
               <Link
                 to="/admin_dashboard/settings"
-                className="btn btn-sm h-10 w-full text-base bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
+                className="btn btn-sm h-10 w-full bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium text-[#3a59af]"
               >
                 <FaUser />
                 Profile Page
               </Link>
               <Link
                 to="/admin_dashboard/settings"
-                className="btn btn-sm h-10 w-full text-base bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
+                className="btn btn-sm h-10 w-full bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium text-[#3a59af]"
               >
                 <IoSettingsSharp /> Settings
               </Link>
@@ -101,7 +100,7 @@ const UserProfileModal = () => {
                     }
                   });
                 }}
-                className="btn btn-sm h-10 w-full text-base bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
+                className="btn btn-sm h-10 w-full text-base bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium text-[#3a59af]"
               >
                 <IoLogOut />
                 Log out
@@ -114,4 +113,4 @@ const UserProfileModal = () => {
   );
 };
 
-export default UserProfileModal;
+export default AdminProfileModal;
