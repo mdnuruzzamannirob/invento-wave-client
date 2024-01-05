@@ -1,11 +1,11 @@
 import { useState } from "react";
-import AdminSidebar from "./AdminSidebar";
+import AdminSidebar from "../admin_sidebar/AdminSidebar";
 import { useLocation } from "react-router-dom";
+import UserProfileModal from "./UserProfileModal";
 
 const AdminNavbar = () => {
   const [navOpen, setNavOpen] = useState(false);
 
-  // const navigate = useNavigate();
   const location = useLocation();
 
   const b =
@@ -26,11 +26,8 @@ const AdminNavbar = () => {
       : "";
 
   return (
-    <div className="h-full w-full flex items-center justify-between px-5 bg-gray-50">
-      <h3 className="text-xl font-semibold">{b}</h3>
-      <div className="">
-        <h2>lorem</h2>
-      </div>
+    <div className="h-full w-full flex items-center justify-between px-5 bg-gray-100 border-b-2">
+      <h3 className="hidden lg:block text-xl font-semibold">{b}</h3>
 
       {/* small device menu */}
       <div className="lg:hidden">
@@ -62,12 +59,15 @@ const AdminNavbar = () => {
         </label>
       </div>
       <div
-        className={`lg:hidden fixed top-0 left-0 w-[200px] sm:w-[230px] h-screen z-50 bg-white transition-transform transform  ${
+        className={`lg:hidden fixed top-0 left-0 w-[250px] sm:w-[300px] h-screen z-50 bg-white transition-transform transform  ${
           navOpen ? "translate-x-0" : "-translate-x-full"
         } duration-700 ease-in-out z-10`}
       >
         <AdminSidebar />
       </div>
+
+      {/* user profile modal part */}
+      <UserProfileModal />
     </div>
   );
 };

@@ -3,12 +3,7 @@ import usePublicAPI from "./usePublicAPI";
 
 const usePublicFetch = (url, ...key) => {
   const axiosPublic = usePublicAPI();
-  const {
-    data = [],
-    refetch,
-    isPending,
-    isLoading,
-  } = useQuery({
+  const { data, refetch, isPending, isLoading } = useQuery({
     queryKey: [...key],
     queryFn: async () => {
       const res = await axiosPublic.get(url);

@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const RootFooter = () => {
   return (
     <footer className="h-[250px] flex items-center justify-center bg-[#323a46] text-white font-Fira">
-      <div className="">
+      <div>
         {/* logo part */}
         <Link to={"/"} className="flex items-center justify-center gap-2">
           <img className="w-7 h-7" src={logo} alt="" />

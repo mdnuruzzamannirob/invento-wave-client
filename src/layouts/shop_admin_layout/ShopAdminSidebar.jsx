@@ -1,10 +1,16 @@
 import { FaUser } from "react-icons/fa";
-import { MdSpaceDashboard } from "react-icons/md";
+import {
+  MdSpaceDashboard,
+  MdOutlineManageHistory,
+  MdHistoryEdu,
+} from "react-icons/md";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../../components/ui/Logo";
 import useAuth from "../../hooks/useAuth";
 import { GoHomeFill } from "react-icons/go";
-import { IoLogOut } from "react-icons/io5";
+import { IoCard, IoLogOut, IoSettingsSharp } from "react-icons/io5";
+import { IoMdAdd } from "react-icons/io";
+import { LiaSellsy } from "react-icons/lia";
 
 const ShopAdminSidebar = () => {
   const { user, logout } = useAuth();
@@ -12,7 +18,7 @@ const ShopAdminSidebar = () => {
   const location = useLocation();
 
   return (
-    <div className="h-full flex flex-col justify-between overflow-hidden bg-gray-50">
+    <div className="h-full flex flex-col justify-between overflow-hidden bg-gray-100 border-r-2">
       <div className="flex flex-col px-2 gap-2">
         <Link
           to={"/"}
@@ -40,7 +46,7 @@ const ShopAdminSidebar = () => {
               : "btn btn-sm h-10 text-sky-400 hover:text-sky-400 bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
           }
         >
-          <MdSpaceDashboard /> Add Product
+          <IoMdAdd /> Add Product
         </NavLink>
         <NavLink
           to="/dashboard/manage_products"
@@ -52,7 +58,7 @@ const ShopAdminSidebar = () => {
               : "btn btn-sm h-10 text-sky-400 hover:text-sky-400 bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
           }
         >
-          <MdSpaceDashboard /> Manage Products
+          <MdOutlineManageHistory /> Manage Products
         </NavLink>
         <NavLink
           to="/dashboard/sell_products"
@@ -64,7 +70,7 @@ const ShopAdminSidebar = () => {
               : "btn btn-sm h-10 text-sky-400 hover:text-sky-400 bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
           }
         >
-          <MdSpaceDashboard /> Sell Products
+          <LiaSellsy /> Sell Products
         </NavLink>
         <NavLink
           to="/dashboard/sales_history"
@@ -76,7 +82,7 @@ const ShopAdminSidebar = () => {
               : "btn btn-sm h-10 text-sky-400 hover:text-sky-400 bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
           }
         >
-          <MdSpaceDashboard /> Sales History
+          <MdHistoryEdu /> Sales History
         </NavLink>
         <NavLink
           to="/dashboard/purchase_subscription"
@@ -88,7 +94,7 @@ const ShopAdminSidebar = () => {
               : "btn btn-sm h-10 text-sky-400 hover:text-sky-400 bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
           }
         >
-          <MdSpaceDashboard /> Purchase Subscription
+          <IoCard /> Purchase Subscription
         </NavLink>
         {/* divider */}
         <div className="divider my-0"></div>
@@ -114,7 +120,8 @@ const ShopAdminSidebar = () => {
               : "btn btn-sm h-10 text-sky-400 hover:text-sky-400 bg-transparent hover:bg-black/5 border-none shadow-none rounded-md justify-start font-medium"
           }
         >
-          <MdSpaceDashboard /> Settings
+          <IoSettingsSharp />
+          Settings
         </NavLink>
         <button
           onClick={() => {
